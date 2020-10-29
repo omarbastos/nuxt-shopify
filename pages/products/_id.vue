@@ -3,7 +3,7 @@
     <v-btn fab left style="top: 50%" fixed icon @click="$router.back()">
       <v-icon>mdi-arrow-left</v-icon>
     </v-btn>
-    <v-col cols="7" class="pa-0 ma-0">
+    <v-col cols="12" md="7" class="pa-0 ma-0">
       <v-img
         class="grey lighten-3"
         max-height="90vh"
@@ -11,7 +11,7 @@
         :src="mainImage"
       ></v-img>
     </v-col>
-    <v-col cols="5" class="pa-0 pl-1 ma-0">
+    <v-col cols="12" md="5" class="pa-0 pl-1 ma-0">
       <v-card
         height="40%"
         elevation="0"
@@ -23,7 +23,11 @@
           >{{ product.title }}
         </v-card-title>
       </v-card>
-      <v-card height="60%" elevation="0" color="grey lighten-3">
+      <v-card
+        :height="$vuetify.breakpoint.mdAndUp ? '60%' : 'auto'"
+        elevation="0"
+        color="grey lighten-3"
+      >
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn-toggle

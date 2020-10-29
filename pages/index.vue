@@ -24,7 +24,11 @@
           enter-active-class="animated animate__fadeInLeft"
           leave-active-class="animated animate__fadeOutRight"
         >
-          <img :key="currentCollection.id" :src="currentCollection.image.src" />
+          <v-img
+            :key="currentCollection.id"
+            contain
+            :src="currentCollection.image.src"
+          />
         </transition>
       </v-col>
       <v-col cols="12" md="7">
@@ -104,11 +108,18 @@
                         elevation="0"
                         color="black"
                         dark
+                        :x-small="!$vuetify.breakpoint.mdAndUp"
                         :to="{ name: 'products-id', params: { id: item.id } }"
                       >
                         ${{ item.variants[0].price }}
-                        <v-divider class="ml-2 mr-4" vertical inset></v-divider>
-                        <v-icon x-small>mdi-cart-outline</v-icon>
+                        <template v-if="$vuetify.breakpoint.mdAndUp">
+                          <v-divider
+                            class="ml-2 mr-4"
+                            vertical
+                            inset
+                          ></v-divider>
+                          <v-icon x-small>mdi-cart-outline</v-icon>
+                        </template>
                       </v-btn>
                     </v-expand-transition>
                     <v-spacer></v-spacer>
